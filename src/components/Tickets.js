@@ -1,10 +1,8 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {tickets} from "../reducers";
+import { connect } from "react-redux";
+import state from "../state";
 
-function Tickets(props) {
-  const state = useSelector((state) => state)
-  const dispatch = useDispatch()
+function Tickets({tickets}) {
   return(
     <div className="col-lg-3 col-md-6">
       <div className="panel panel-red">
@@ -14,7 +12,7 @@ function Tickets(props) {
               <i className="fa fa-support fa-5x"></i>
             </div>
             <div className="col-xs-9 text-right">
-              <div className="huge">{() => dispatch(tickets())}</div>
+              <div className="huge">{tickets}</div>
               <div>Support Tickets!</div>
             </div>
           </div>
@@ -30,6 +28,13 @@ function Tickets(props) {
     </div>);
 }
 
-export default (Tickets);
+function mapStateToProps() {
+  return {
+    tickets: state.tickets
+  }
+}
+const mapDispatchToProps = {
+  tickets: state.tickets
+ }
 
-
+export default connect(mapStateToProps, mapDispatchToProps) (Tickets)

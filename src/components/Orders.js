@@ -1,10 +1,8 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {newOrders} from "../reducers";
+import { connect } from "react-redux";
+import state from "../state";
 
-function Orders(props) {
-  const state = useSelector((state) => state)
-  const dispatch = useDispatch()
+function Orders({newOrders}) {
   return ( 
     <div className="col-lg-3 col-md-6">
       <div className="panel panel-yellow">
@@ -14,7 +12,7 @@ function Orders(props) {
               <i className="fa fa-shopping-cart fa-5x"></i>
             </div>
             <div className="col-xs-9 text-right">
-              <div className="huge">{() => dispatch(newOrders())}</div>
+              <div className="huge">{newOrders}</div>
               <div>New Orders!</div>
             </div>
           </div>
@@ -29,5 +27,12 @@ function Orders(props) {
       </div>
     </div>);
 }
-
-export default Orders;
+function mapStateToProps() {
+  return {
+    newOrders: state.newOrders
+  }
+}
+const mapDispatchToProps = {
+  newOrders: state.newOrders
+}
+export default connect(mapStateToProps, mapDispatchToProps) (Orders)

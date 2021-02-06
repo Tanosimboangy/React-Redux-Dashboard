@@ -1,10 +1,8 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {newComments} from "../reducers";
+import { connect } from "react-redux"; 
+import state from "../state"; 
 
-function Comments(props) {
-    const state = useSelector((state) => state)
-	const dispatch = useDispatch()
+function Comments({newComments}) {
   return ( 
     <div className="col-lg-3 col-md-6">
       <div className="panel panel-primary">
@@ -14,7 +12,7 @@ function Comments(props) {
                       <i className="fa fa-comments fa-5x"></i>
                   </div>
                   <div className="col-xs-9 text-right">
-                      <div className="huge">{() => dispatch(newComments())}</div>
+                      <div className="huge">{newComments}</div>
                       <div>New Comments!</div>
                   </div>
               </div>
@@ -30,4 +28,12 @@ function Comments(props) {
     </div>);
 }
 
-export default Comments;
+function mapStateToProps() {
+    return {
+        newComments: state.newComments
+    }
+}
+const mapDispatchToProps = {
+    newComments: state.newComments
+}
+export default connect(mapStateToProps, mapDispatchToProps) (Comments)

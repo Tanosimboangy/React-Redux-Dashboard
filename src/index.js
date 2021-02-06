@@ -4,7 +4,7 @@ import App from "./App";
 import "./index.css";
 import state from "./state";
 import { Provider } from "react-redux";
-import store from "./reducers/index";
+import store from "./store";
 const {dateTime, newComments, newTasks, newOrders, tickets, orders, taskItem, tasks, messages} = state;
 
 ReactDOM.render(

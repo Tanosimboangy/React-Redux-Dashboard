@@ -1,27 +1,19 @@
-import { combineReducers, createStore } from 'redux'
-import newCommentsReducer from "../components/Comments";
-import newTasksReducer from "../components/Tasks";
-import newOrdersReducer from "../components/Orders";
-import ticketsReducer from "../components/Tickets";
-import ordersReducer from "../components/Orders";
-import tasksReducer from "../components/Tasks";
-import messagesReducer from "../components/MessagePreview";
-// const {combineReducers, createStore} = redux;
+import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers ({
-    newComments : newCommentsReducer,
-    newTasks : newTasksReducer,
-    newOrders : newOrdersReducer,
-    tickets : ticketsReducer,
-    orders : ordersReducer,
-    tasks : tasksReducer,
-    messages : messagesReducer,
+function newCommentsReducer(newComments = 12, action) {return newComments}
+function newTasksReducer(newTasks = 12, action) {return newTasks}
+function newOrdersReducer(newOrders = 2, action) {return newOrders}
+function ticketsReducer(tickets = 13, action) {return tickets}
+function ordersReducer(orders = 14, action) {return orders}
+function tasksReducer(tasks = 15, action) {return tasks}
+function messagesReducer(messages = 16, action) {return messages}
+
+export const reducers = combineReducers({
+    newCommentsReducer, 
+    newTasksReducer, 
+    newOrdersReducer, 
+    ticketsReducer, 
+    ordersReducer, 
+    tasksReducer, 
+    messagesReducer
 })
-
-const store = createStore(rootReducer());
-
-store.subscribe(() => {
-    console.log(store.getState())
-})
-
-export default store;

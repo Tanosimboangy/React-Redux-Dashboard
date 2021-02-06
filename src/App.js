@@ -10,18 +10,21 @@ import Tasks from "./components/Tasks";
 import TasksPanel from "./components/TasksPanel";
 import Tickets from "./components/Tickets";
 import TransactionsPanel from "./components/TransactionsPanel";
-import { useSelector, useDispatch } from "react-redux";
-import {newComments, messages, newTasks, newOrders, tickets, tasks, orders} from "./reducers";
 
-function App(props) {
-  const state = useSelector((state) => state)
-  const dispatch = useDispatch();
-
+function App({
+  messages, 
+  newComments, 
+  newTasks, 
+  newOrders, 
+  tickets, 
+  tasks, 
+  orders
+}) {
   return (
     <div> 
       <div id="wrapper">
         <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <TopNav messages={() => dispatch(messages())} />
+          <TopNav messages={messages} />
           <SideNav />
         </nav>
         <div id="page-wrapper">
@@ -62,16 +65,16 @@ function App(props) {
   );
 }
 
-App.propTypes = {
-  dateTime: PropTypes.string.isRequired,
-  newComments: PropTypes.number.isRequired,
-  newTasks: PropTypes.number.isRequired,
-  newOrders: PropTypes.number.isRequired,
-  tickets: PropTypes.number.isRequired,
-  orders: PropTypes.array.isRequired,
-  taskItem: PropTypes.string.isRequired,
-  messages: PropTypes.array,
-  tasks: PropTypes.array
-};
-
 export default App;
+
+// App.propTypes = {
+//   dateTime: PropTypes.string.isRequired,
+//   newComments: PropTypes.number.isRequired,
+//   newTasks: PropTypes.number.isRequired,
+//   newOrders: PropTypes.number.isRequired,
+//   tickets: PropTypes.number.isRequired,
+//   orders: PropTypes.array.isRequired,
+//   taskItem: PropTypes.string.isRequired,
+//   messages: PropTypes.array,
+//   tasks: PropTypes.array
+// };

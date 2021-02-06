@@ -1,14 +1,16 @@
 import React from "react";
 import MessagePreview from "./MessagePreview";
+import { connect } from "react-redux"
+import state from "../state"
 
-function TopNav(props) {
+function TopNav({messages}) {
   return (
     <ul className="nav navbar-right top-nav">
       <li className="dropdown">
         <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-envelope"></i> <b className="caret"></b></a>
         <ul className="dropdown-menu message-dropdown">
             {
-                props.messages.map(function(m,i) {
+                messages.map(function(m,i) {
                   return <MessagePreview key={i} message={m} />;
                 })
             }
@@ -65,5 +67,14 @@ function TopNav(props) {
       </li>
     </ul>);
 }
+ 
+function mapStateToProps() {
+    return {
+        messages: state.messages
+    }
+}
+const mapDispatchToProps = {
+    messages: state.messages
+}
 
-export default TopNav;
+export default connect(mapStateToProps, mapDispatchToProps) (TopNav);
