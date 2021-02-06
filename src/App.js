@@ -10,14 +10,18 @@ import Tasks from "./components/Tasks";
 import TasksPanel from "./components/TasksPanel";
 import Tickets from "./components/Tickets";
 import TransactionsPanel from "./components/TransactionsPanel";
-
+import { useSelector, useDispatch } from "react-redux";
+import {newComments, messages, newTasks, newOrders, tickets, tasks, orders} from "./reducers";
 
 function App(props) {
+  const state = useSelector((state) => state)
+  const dispatch = useDispatch();
+
   return (
     <div> 
       <div id="wrapper">
         <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <TopNav messages={props.messages} />
+          <TopNav messages={() => dispatch(messages())} />
           <SideNav />
         </nav>
         <div id="page-wrapper">
@@ -35,19 +39,19 @@ function App(props) {
               </div>
             </div>
             <div className="row">
-              <Comments newComments={props.newComments} />
-              <Tasks newTasks={props.newTasks} />
-              <Orders newOrders={props.newOrders} />
-              <Tickets tickets={props.tickets} />
+              <Comments newComments={newComments} />
+              <Tasks newTasks={newTasks} />
+              <Orders newOrders={newOrders} />
+              <Tickets tickets={tickets} />
             </div>
             <AreaChart />
             <div className="row">
               <DonutChart />
               <div className="col-lg-4">
-                <TasksPanel tasks={props.tasks} />
+                <TasksPanel tasks={tasks} />
               </div>
               <div className="col-lg-4">
-                <TransactionsPanel orders={props.orders} />
+                <TransactionsPanel orders={orders} />
               </div>
             </div>
           </div>

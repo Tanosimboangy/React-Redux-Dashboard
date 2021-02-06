@@ -1,6 +1,10 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {newComments} from "../reducers";
 
 function Comments(props) {
+    const state = useSelector((state) => state)
+	const dispatch = useDispatch()
   return ( 
     <div className="col-lg-3 col-md-6">
       <div className="panel panel-primary">
@@ -10,7 +14,7 @@ function Comments(props) {
                       <i className="fa fa-comments fa-5x"></i>
                   </div>
                   <div className="col-xs-9 text-right">
-                      <div className="huge">{props.newComments}</div>
+                      <div className="huge">{() => dispatch(newComments())}</div>
                       <div>New Comments!</div>
                   </div>
               </div>
