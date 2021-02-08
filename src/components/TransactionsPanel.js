@@ -42,6 +42,4 @@ function mapStateToProps() {
         orders: state.orders
     }
 }
-
-export default connect(mapStateToProps) (TransactionsPanel);
-// export default TransactionsPanel;
+export default connect(mapStateToProps, {}) (TransactionsPanel);

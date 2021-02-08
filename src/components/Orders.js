@@ -32,7 +32,4 @@ function mapStateToProps() {
     newOrders: state.newOrders
   }
 }
-const mapDispatchToProps = {
-  newOrders: state.newOrders
-}
-export default connect(mapStateToProps, mapDispatchToProps) (Orders)
+export default connect(mapStateToProps, {}) (Orders)

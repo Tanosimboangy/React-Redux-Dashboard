@@ -28,7 +28,4 @@ function mapStateToProps() {
     messages: state.messages
   }
 }
-const mapDispatchToProps={
-  messages: state.messages
-}
-export default connect(mapStateToProps, mapDispatchToProps) (MessagePreview);
+export default connect(mapStateToProps, {}) (MessagePreview);

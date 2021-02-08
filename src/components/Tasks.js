@@ -32,10 +32,6 @@ function mapStateToProps() {
     return {
         newTasks: state.newTasks
     }
-}
-
-const mapDispatchToProps = {
-    newTasks: state.newTasks
-}
-export default connect(mapStateToProps. mapDispatchToProps) (Tasks)
+}   
+export default connect(mapStateToProps, {}) (Tasks)
 

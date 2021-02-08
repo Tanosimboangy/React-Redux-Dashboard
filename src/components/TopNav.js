@@ -73,8 +73,4 @@ function mapStateToProps() {
         messages: state.messages
     }
 }
-const mapDispatchToProps = {
-    messages: state.messages
-}
-
-export default connect(mapStateToProps, mapDispatchToProps) (TopNav);
+export default connect(mapStateToProps, {}) (TopNav);

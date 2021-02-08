@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import state from "../state";
 
 function Tickets({tickets}) {
   return(
@@ -27,14 +26,4 @@ function Tickets({tickets}) {
       </div>
     </div>);
 }
-
-function mapStateToProps() {
-  return {
-    tickets: state.tickets
-  }
-}
-const mapDispatchToProps = {
-  tickets: state.tickets
- }
-
-export default connect(mapStateToProps, mapDispatchToProps) (Tickets)
+export default connect(({tickets}) => ({tickets}), {}) (Tickets)

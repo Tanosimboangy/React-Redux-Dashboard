@@ -29,8 +29,4 @@ function mapStateToProps() {
     tasks: state.tasks
   }
 }
-
-const mapDispatchToProps = {
-  tasks: state.tasks
-}
-export default connect(mapStateToProps, mapDispatchToProps) (TasksPanel);
+export default connect(mapStateToProps, {}) (TasksPanel);

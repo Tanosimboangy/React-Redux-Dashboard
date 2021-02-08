@@ -33,7 +33,4 @@ function mapStateToProps() {
         newComments: state.newComments
     }
 }
-const mapDispatchToProps = {
-    newComments: state.newComments
-}
-export default connect(mapStateToProps, mapDispatchToProps) (Comments)
+export default connect(mapStateToProps, {}) (Comments)
